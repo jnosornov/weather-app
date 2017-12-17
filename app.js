@@ -1,4 +1,18 @@
 var request = require('request');
+var yargs = require('yargs');
+
+const argv = yargs
+.options({
+    a: {
+        demand: true,
+        alias: 'address',
+        describe: 'Address to fetch for weather',
+        string: true
+    }
+})
+.help()
+.alias('help', 'h')
+.argv;
 
 request({
     url: `https://maps.googleapis.com/maps/api/geocode/json?address=1301%20%lombard%20street`,

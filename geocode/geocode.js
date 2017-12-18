@@ -7,8 +7,8 @@ var geocodeAddress = (address, callback) => {
         url: `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}`,
         json: true
     }, (error, response, body) => {
-        console.log(response.statusCode);
-        console.log(body.status);
+        //console.log(response.statusCode);
+        //console.log(body.status);
         if(error) {
             callback('Unable to connect to Google servers');
         } else if(body.status === 'ZERO_RESULTS') {
@@ -18,7 +18,7 @@ var geocodeAddress = (address, callback) => {
             callback(undefined, {
                 address: body.results[0].formatted_address,
                 latitude: body.results[0].geometry.location.lat,
-                longitud: body.results[0].geometry.location.lng
+                longitude: body.results[0].geometry.location.lng
             });
         }
     });
